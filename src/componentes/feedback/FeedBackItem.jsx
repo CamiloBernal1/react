@@ -1,28 +1,18 @@
-import { useState } from "react";
+import { useState } from 'react';
+import {FaTimes} from 'react-icons/fa'
 
-const FeedBackItem =()=>{
-
-    //Estados iniciales
-
-    const [ rating, setRating] = useState(1)
-    const [ texto, setTexto] = useState("Buen instructor, mejorar los recursos")
-
-    const cambiarNota = ()=>{
-        setRating((prev)=>{
-            return prev + 1
-        })
-    }
+const FeedBackItem =({feedback, deleteResenia})=>{
 
     return(
         <div className="card">
             <div className="num-display">
-                { rating }
+                { feedback.rating }
             </div>
             <div className="text-rating">
-                { texto }
+                { feedback.texto }
             </div>
-            <button onClick={ cambiarNota }>
-                Cambiar nota
+            <button onClick={()=>deleteResenia(feedback.id)} className="close">
+                <FaTimes />
             </button>
         </div>
     )
